@@ -2,7 +2,9 @@ package main
 import "fmt"
 
 func main() {
-	var intNum int
-
-	fmt.Println(intNum)
+	db ,err := sql.Open("sqlite3", "./data.db")
+	if err!= nil{
+		log.Fatalf("failed to open database: %v", err)
+	}
+	defer db.Close()
 }
